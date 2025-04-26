@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 from dotenv import load_dotenv
 import os
 import fitz  # PyMuPDF for PDF text extraction
@@ -6,6 +7,7 @@ import google.generativeai as genai
 
 load_dotenv()
 app = Flask(__name__)
+CORS(app)
 
 # Configure Gemini
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
